@@ -26,10 +26,18 @@ const getCountries = async () =>{
     await Country.bulkCreate(data)
     return data;
 }
-
+const getActivities = async()=>{
+    let result = await Activity.findAll({
+        include: {
+            model : Country
+        }
+    });
+    return result
+}
 
 
 module.exports={
         getCountries,
+        getActivities
    }   
 

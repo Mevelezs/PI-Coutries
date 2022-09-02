@@ -1,4 +1,6 @@
-const { Router } = require ('express')
+const e = require('express');
+const { Router } = require ('express');
+const { getActivities } = require('../controllers/controllers');
 const {Country, Activity} = require('../db');
 
 
@@ -9,6 +11,10 @@ router.post('/', async(req, res) => {
     if(!name || !difficulty || !season || !duration){
         return res.status(404).send('missing parameters')
     }
+    
+    let nameFoundinDb = await getActivities();
+    nameFoundinDb = nameFoundinDb.filter(el => el.name.toLowerCase() === name.toLowerCase());
+    if(nameFoundinDb.length !== 0) return res.status(400).send('Invalid Name');
 
     const newActivity = await Activity.create({
         name, 
@@ -25,16 +31,12 @@ router.post('/', async(req, res) => {
         })
         await newActivity.addCountry(country);
     })
-    res.send('Atividad creada')
+    res.send('Ativity Created')
 })
 
 router.get('/', async(req, res) => {
     try {
-        let result = await Activity.findAll({
-            include: {
-                model : Country
-            }
-        });
+        let result = await getActivities()
         res.send(result)
     } catch (error) {
         console.log(error)

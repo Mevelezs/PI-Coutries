@@ -1,0 +1,2 @@
+export const GET_COUNTRIES = 'GET_COUNTRIES';
+export const ACTIVITY_CREATE = 'ACTIVITY_CREATE';
