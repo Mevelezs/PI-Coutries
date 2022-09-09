@@ -10,12 +10,12 @@ router.get('/', async(req, res )=> {
         const datadb = await getCountries()
         if(name){
             const countryFound = datadb.filter(count => count.name.toLowerCase().includes(name.toLowerCase()));
-            countryFound.length ? res.status(200).send(countryFound): res.status(400).send('Country not found')
+            countryFound.length ? res.status(200).send(countryFound): res.status(404).send('Country not found')
         }else{
             res.send(datadb);
         }
     } catch (error) {
-        console.log(error) 
+        res.status(400).send(error)
     }
 
 })

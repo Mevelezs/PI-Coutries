@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { getCountries, activityCeate } from '../../actions/action';
+import { Link } from 'react-router-dom';
 
 
 export default function ActivityCreate() {
@@ -92,6 +93,7 @@ return (
 
             <label> Difficulty </label>
             <select onChange = {handleDifficult}>
+                <option value = '' />
                 <option value ='1'> 1 </option>
                 <option value ='2'> 2 </option>
                 <option value ='3'> 3 </option>
@@ -125,7 +127,8 @@ return (
             </select>
             <ul>PAISES AGREGADOS<li>{input.countryId.map(e => e + '. ')}</li></ul>
             <button type = 'submit' onClick = {handleSubmit}> Send </button>
+            <Link to = '/countries'><button type = 'button'> Go Back</button></Link>
         </form> 
     </div>
-  )
+    )
 }

@@ -23,7 +23,7 @@ router.post('/', async(req, res) => {
         duration
     })
     
-    countryId.map( async(el) => {
+    countryId.map( async (el) => {
         const country = await Country.findAll({
             where : { 
                 id : el.toUpperCase()
