@@ -1,5 +1,6 @@
-import React from 'react'
+
 import axios from 'axios'
+
 import { ACTIVITY_CREATE, GET_COUNTRIES, GET_DETAIL, GET_COUNTRY_BY_NAME, FILTER_PER_COTINENT, GET_ACTIVITIES, FILTER_PER_ACTIVITIY, ORDER_BY_NAME, ORDER_BY_POPULATION} from './actionTypes'
 
 
@@ -40,7 +41,7 @@ export function getDetails(id){
                     }
             ) 
         } catch (error) {
-            console.log(error) 
+            alert('countrie no found')
         }
     }
 }

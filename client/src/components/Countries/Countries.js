@@ -1,10 +1,11 @@
 import { getCountries, filterPerContinent, getActivities, filterPerActivity, orderByName, orderPerPopul } from '../../actions/action'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import Countrie from '../Countrie/Countrie';
+import Country from '../Country/Countrie';
 import SearchBar from '../SearchBar/SearchBar';
 import { useState } from 'react';
 import Paginado from '../Paginado/Paginado';
+import './Countries.css'
 
 export default function Countries(props) {
 
@@ -17,8 +18,6 @@ const {activities} = useSelector (state => state)
 
 const [currentPage, setCurrentPage] = useState(1);
 const [countriesPerPage, setCountriesPerPage] = useState(10);
-
-const [order, setOrder] = useState('')
 
 const indexOfLastCountry = currentPage === 1 ? 9 : currentPage * countriesPerPage;
 const indexOfFirstCountry = currentPage === 1 ? 0 :indexOfLastCountry - countriesPerPage;
@@ -43,7 +42,7 @@ const paginado = (pageNumber)=>{
 }
 
 
-const createActivity = (e) =>{
+const goTocreateActivity = (e) =>{
     e.preventDefault();
     push('/activityCreate')
 }
@@ -81,13 +80,13 @@ const handleOrderPerPopul = (e)=>{
 
 return (
         
-   <div>
+   <div className='bigDiv'>
 
-    <button type = 'button' onClick = {createActivity}> Create Activities </button>
-    <button type = 'button' onClick = {getCountryAgain}> Get All Countries </button>
+    <button className = 'bottom-button' type = 'button' onClick = {goTocreateActivity}> Create Activities </button>
+    <button className = 'bottom-button' type = 'button' onClick = {getCountryAgain}> Get All Countries </button>
     <SearchBar/>
 
-    <select onChange = {handleOnfilterPerContinet}>
+    <select className = 'bottom-button' onChange = {handleOnfilterPerContinet}>
         <option value = 'All'> All Continent</option>
         {
         setContinent?.map(continent =>(
@@ -96,7 +95,7 @@ return (
         }
     </select>
     
-    <select onChange = {handleOnfilterPerActivityName}>
+    <select className = 'bottom-button' onChange = {handleOnfilterPerActivityName}>
     <option value = 'All'> All Activities</option>
         {
             activities?.map(act => (
@@ -105,16 +104,16 @@ return (
         }
     </select>
 
-    <select onChange = {handleOrderAlf}>
-        <option value ='All'>order</option>
+    <select className = 'bottom-button' onChange = {handleOrderAlf}>
+        <option value ='All'>Alphabetic Order</option>
         <option value ='Asc'>Ascendente</option>
         <option value ='Desc'>Descendente</option>
     </select>
 
-    <select onChange = {handleOrderPerPopul}>
-        <option value ='All'>order</option>
-        <option value ='Asc'>Ascendente Per Population</option>
-        <option value ='Desc'>Descendente Per Population</option>
+    <select className = 'bottom-button' onChange = {handleOrderPerPopul}>
+        <option value ='All'>Order Per Population</option>
+        <option value ='Asc'>Ascendente</option>
+        <option value ='Desc'>Descendente</option>
     </select>
 
     <Paginado
@@ -123,18 +122,19 @@ return (
         countries = {countries.length}
     />
 
-
+    <div className = 'Countries'>
     {
         currentCountries?.map(coun => (
-            <Countrie
-                key = {coun.id}
-                id = {coun.id}
-                name = {coun.name}
-                continent = {coun.continent}
-                flag = {coun.flag}
+            <Country
+            key = {coun.id}
+            id = {coun.id}
+            name = {coun.name}
+            continent = {coun.continent}
+            flag = {coun.flag}
             />
-        )) 
-    }
+            )) 
+        }
+    </div>
     
     </div>
     )

@@ -1,0 +1,21 @@
+
+.flag-container{
+    margin: 12px;
+    display: flex;
+    justify-content: center;
+
+}
+.countrie1{
+    text-align: center;
+    border: solid gray 3px;
+}
+
+.dCountrie{
+    text-align: center;
+    border: solid gray 3px;
+}
+.center-b{
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+}

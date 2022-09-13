@@ -1,0 +1,48 @@
+.main-container{
+    display: grid;
+    place-items: center;
+    height:700px;
+}
+.sub-container{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    column-gap: 5px;
+    padding: 80px;
+    border: solid 1px rgba(128, 128, 128, 0.829);
+    border-radius: 8px;
+
+}
+.left-container{
+    display: table-column;
+    column-count: 2;
+    align-items: flex-start;
+    padding: 8px;
+    margin: 8px;
+
+}
+.right-container{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 8px;
+    margin: 8px;
+}
+.name, .difficult, .season, .duration{
+    margin: 8px;
+}
+
+
+
+.addTitle{
+    text-align: center;
+}
+.countriesAdded{
+    display: flex;
+}
+.bottom-button{
+    margin: 4px;
+    font-size: large;
+    padding: 4px;
+    font-weight: normal;
+    background-color: rgb(255, 255, 255);
+    border: solid gray 1px;
+}

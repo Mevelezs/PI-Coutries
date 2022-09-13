@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './Paginado.module.css';
+import './Paginado.css';
 
 export default function Paginado(props) {
 const{ countries, countriesPerPage, paginado}=props;
@@ -12,11 +12,11 @@ for (let i = 1 ; i <= Math.ceil(countries/countriesPerPage); i++) {
 }
 
 return (
-    <nav>
+    <nav className = 'nav'>
         <ul>
         {
             pageNumber && pageNumber.map( number => (
-                <li className={style.li} key={number}>
+                <li className='li' key={number}>
                     <a onClick ={()=> paginado(number)}>{number}</a>
                 </li>
             ))

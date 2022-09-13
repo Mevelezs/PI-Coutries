@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import { getCountryByName } from "../../actions/action";
+import './SearchBar.css'
 
 
 export default function SearchBar() {
 const dispatch = useDispatch()
-const [name, setName] = useState('');
+const [name, setName] = useState(' ');
 
 const handleOnChange = (e) =>{
     e.preventDefault();
@@ -20,9 +21,9 @@ const handleOnClick = (e)=>{
 }
 
 return (
-    <div>
-        <input type = 'text' placeholder = 'Search' onChange = {handleOnChange}></input>
-        <button type ='submit' onClick = {handleOnClick}>Search</button>
-    </div>
+    <form className='searchbar'>
+        <input className = 'bottom-button' type = 'text' placeholder = 'Search' onChange = {handleOnChange}></input>
+        <button className = 'bottom-button' type ='submit' onClick = {handleOnClick}>Search</button>
+    </form>
     )
 }

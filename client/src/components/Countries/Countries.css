@@ -1,0 +1,14 @@
+.Countries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 100px;
+    align-items: center;
+  }
+.bigDiv{
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    /* column-count: 2; */
+}
