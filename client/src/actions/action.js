@@ -5,27 +5,31 @@ import { ACTIVITY_CREATE, GET_COUNTRIES, GET_DETAIL, GET_COUNTRY_BY_NAME, FILTER
 
 
 export function getCountries(){
-    return function (dispatch){
-        fetch('http://localhost:3001/countries')
-        .then(data => data.json())
-        .then(response => dispatch(
+    return async (dispatch) =>{
+        const countries = await axios.get(`/countries`)
+         return(
+             dispatch(
             {
             type: GET_COUNTRIES, 
-            payload: response
-        }
+            payload: countries.data
+           }
         ))
     }
 }
 
 export function activityCeate(data){
-    return async function (dispatch){
-        let post = await axios.post('http://localhost:3001/activities', data)
+    return async (dispatch) =>{
+        try{
+        let post = await axios.post(`/activities`,data)
         return dispatch(
             {
                 type : ACTIVITY_CREATE,
                 payload : post
             }
         )
+        }catch(error){
+            console.log(error)
+        }
     }
     
 }
@@ -33,7 +37,7 @@ export function activityCeate(data){
 export function getDetails(id){
     return async(dispatch) => {
         try {
-            const data = await axios.get(`http://localhost:3001/countries/${id}`)
+            const data = await axios.get(`/countries/${id}`)
                 return dispatch(
                     {
                         type : GET_DETAIL,
@@ -47,26 +51,27 @@ export function getDetails(id){
 }
 
 export const getCountryByName = (name)=>{
-    return (dispatch) =>{
-        fetch(`http://localhost:3001/countries?name=${name}`)
-        .then(resp => resp.json())
-        .then(data => dispatch(
-            {
-                type: GET_COUNTRY_BY_NAME,
-                payload : data
-            }
-        )).catch(error => {
-            alert(error)})
+    return async (dispatch) =>{
+        try{
+        const Name = await axios.get(`/countries?name=${name}`)
+        return dispatch(
+                {
+                    type: GET_COUNTRY_BY_NAME,
+                    payload : Name.data
+                }
+            )
+        }catch(error){
+            alert(error)
+        }
     }
 }
 
 export const getActivities = ()=>{
-    return function (dispatch){
-        return fetch ('http://localhost:3001/activities')
-                .then(response => response.json())
-                .then(data => dispatch({
+    return async (dispatch) => {
+        const activities = await axios.get(`/activities`)
+                return(dispatch({
                     type: GET_ACTIVITIES,
-                    payload: data
+                    payload: activities.data
                 }))
     }
 
