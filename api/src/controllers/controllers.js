@@ -37,6 +37,7 @@ const getActivities = async()=>{
 }
 
 
+
 module.exports={
         getCountries,
         getActivities
