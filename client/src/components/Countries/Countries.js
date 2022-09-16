@@ -1,4 +1,4 @@
-import { getCountries, filterPerContinent, getActivities, filterPerActivity, orderByName, orderPerPopul } from '../../actions/action'
+import { getCountries, filterPerContinent, getActivities, filterPerActivity, orderByName, orderPerPopul, currentPages} from '../../actions/action'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Country from '../Country/Countrie';
@@ -10,13 +10,14 @@ import './Countries.css'
 export default function Countries(props) {
 
 const {history : {push}} = props;
+const { pages } = useSelector(state => state)
 
 const dispatch = useDispatch()
 const { countries } = useSelector(state => state);
 const { allCountries } = useSelector (state => state)
 const {activities} = useSelector (state => state)
 
-const [currentPage, setCurrentPage] = useState(1);
+const [currentPage, setCurrentPage] = useState(pages);
 const [countriesPerPage, setCountriesPerPage] = useState(10);
 
 const indexOfLastCountry = currentPage === 1 ? 9 : currentPage * countriesPerPage;
@@ -39,6 +40,9 @@ const getCountryAgain = (e)=>{
 
 const paginado = (pageNumber)=>{
     setCurrentPage(pageNumber)
+    dispatch(
+        currentPages(pageNumber)
+    )
 }
 
 

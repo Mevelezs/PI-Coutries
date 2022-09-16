@@ -1,11 +1,12 @@
 import { ACTIVITY_CREATE, GET_COUNTRIES, GET_COUNTRY_BY_NAME, GET_DETAIL, 
-            FILTER_PER_COTINENT, GET_ACTIVITIES, FILTER_PER_ACTIVITIY, ORDER_BY_NAME, ORDER_BY_POPULATION } from '../actions/actionTypes'
+            FILTER_PER_COTINENT, GET_ACTIVITIES, FILTER_PER_ACTIVITIY, ORDER_BY_NAME, ORDER_BY_POPULATION, PAGE } from '../actions/actionTypes'
 
 let initialState = {
     countries :[],
     allCountries:[],
     activities :[],
     detail : [],
+    pages:1,
 } 
 
 
@@ -79,6 +80,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 countries : sortedCoutriesPop
             }
+        case PAGE:{
+            return{
+                ...state,
+                pages : action.payload
+            }
+        }
         default:
             return{
             ...state

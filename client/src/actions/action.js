@@ -1,18 +1,18 @@
 
 import axios from 'axios'
 
-import { ACTIVITY_CREATE, GET_COUNTRIES, GET_DETAIL, GET_COUNTRY_BY_NAME, FILTER_PER_COTINENT, GET_ACTIVITIES, FILTER_PER_ACTIVITIY, ORDER_BY_NAME, ORDER_BY_POPULATION} from './actionTypes'
+import { ACTIVITY_CREATE, GET_COUNTRIES, GET_DETAIL, GET_COUNTRY_BY_NAME, FILTER_PER_COTINENT, GET_ACTIVITIES, FILTER_PER_ACTIVITIY, ORDER_BY_NAME, ORDER_BY_POPULATION, PAGE} from './actionTypes'
 
 
 export function getCountries(){
     return async (dispatch) =>{
         const countries = await axios.get(`/countries`)
-         return(
-             dispatch(
+        return(
+            dispatch(
             {
             type: GET_COUNTRIES, 
             payload: countries.data
-           }
+        }
         ))
     }
 }
@@ -100,6 +100,12 @@ export const orderByName = (payload)=>{
 export const orderPerPopul = (payload) =>{
     return{
         type: ORDER_BY_POPULATION,
+        payload
+    }
+}
+export const currentPages = (payload)=>{
+    return {
+        type:PAGE,
         payload
     }
 }
