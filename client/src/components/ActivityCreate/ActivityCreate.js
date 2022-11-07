@@ -66,7 +66,7 @@ const handleId = (e)=>{// pises repetidos
     }
 }
 const disabledSubmit = useMemo(() => { // inputs vacios => boton
-    if(input.name.length > 0 && input.duration.length < 0 ) return false;
+    if(input.name.length > 0 && input.duration.length > 0 ) return false;
     return true;
 },[input.name, input.duration])
 
