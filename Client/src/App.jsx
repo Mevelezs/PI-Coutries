@@ -1,6 +1,6 @@
 import './App.css';
 import { Route } from 'react-router-dom'
-import Countries from './components/Countries/Countries.js'
+import Countries from './components/Countries/Countries.jsx'
 import ActivityCreate from './components/ActivityCreate/ActivityCreate';
 import Detail from './components/Detail/Detail';
 import LandingPage from './components/landing_Page/LandingPage';
