@@ -6,7 +6,7 @@ import { ACTIVITY_CREATE, GET_COUNTRIES, GET_DETAIL, GET_COUNTRY_BY_NAME, FILTER
 
 export function getCountries(){
     return async (dispatch) =>{
-        const countries = await axios.get("http://localhost:3001/countries")
+        const countries = await axios.get("http://pi-coutries-production.up.railway.app")
         return(
             dispatch(
             {
