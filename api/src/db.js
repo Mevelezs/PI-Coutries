@@ -31,7 +31,7 @@ const { URI } = process.env;
 //           {logging: false, native: false }
 //       );
 
-const sequelize = new Sequelize(URI, {
+const sequelize = new Sequelize(URI,{
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
