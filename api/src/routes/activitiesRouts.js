@@ -1,4 +1,3 @@
-const e = require('express');
 const { Router } = require ('express');
 const { getActivities } = require('../controllers/controllers');
 const {Country, Activity} = require('../db');
