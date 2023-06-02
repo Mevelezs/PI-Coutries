@@ -7,7 +7,6 @@ const {
   DB_PASSWORD,
   DB_HOST,
   DB_NAME,
-  PORT,
   DB_PORT
 } = process.env;
 
@@ -37,7 +36,7 @@ const {
 //       :new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
 //           {logging: false, native: false }
 //       );
-const URI = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
+const URI = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
 const sequelize = new Sequelize(URI, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
